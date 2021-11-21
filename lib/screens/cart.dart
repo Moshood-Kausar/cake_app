@@ -9,27 +9,27 @@ class Cart extends StatefulWidget {
 
 class _CartState extends State<Cart> {
   int _item = 1;
-  int price = 32;
+ late int price;
+  
 
   @override
   void initState() {
     super.initState();
-    price = 32;
-    //total = "$price" + 2;
+    price = 16;
+    
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+        padding: const EdgeInsets.only(left: 20.0, right: 20.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
               Image.asset(
                 'assets/scake.png',
                 height: 320,
-                
                 fit: BoxFit.contain,
                 width: MediaQuery.of(context).size.width,
               ),
@@ -54,18 +54,11 @@ class _CartState extends State<Cart> {
               ),
               const SizedBox(height: 15),
               const Text(
-                '"Butter Cake red velvet coated ',
+                '"Butter Cake red velvet coated \n  with light cream cheese with red velvet\n crumble"',
+                textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.grey, fontSize: 16),
               ),
-              const Text(
-                ' with light cream cheese with red velvet ',
-                style: TextStyle(color: Colors.grey, fontSize: 16),
-              ),
-              const Text(
-                ' crumble"',
-                style: TextStyle(color: Colors.grey, fontSize: 16),
-              ),
-              const SizedBox(height:20),
+              const SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -74,14 +67,14 @@ class _CartState extends State<Cart> {
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   Container(
-                    height: 35,
-                    width: 70,
+                    height: 30,
+                    width: 80,
                     decoration: BoxDecoration(
-                      border: Border.all(color: Colors.grey),
+                      border: Border.all(color: const Color(0xFFC98A81), width: 0.4),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -98,7 +91,8 @@ class _CartState extends State<Cart> {
                               },
                               child: count('-')),
                           Text('$_item',
-                              style: const TextStyle(fontSize: 15, color: Colors.grey)),
+                              style: const TextStyle(
+                                  fontSize: 15, color: Colors.grey)),
                           GestureDetector(
                             onTap: () {
                               setState(() {
@@ -117,7 +111,9 @@ class _CartState extends State<Cart> {
               const SizedBox(height: 20),
               Row(
                 children: const [
-                  Text('Detail Price', style: TextStyle( fontSize:16, fontWeight: FontWeight.bold)),
+                  Text('Detail Price',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                 ],
               ),
               const SizedBox(height: 20),
@@ -126,7 +122,7 @@ class _CartState extends State<Cart> {
                 width: MediaQuery.of(context).size.width,
                 decoration: BoxDecoration(
                   border: Border.all(
-                    color: const Color(0xCCA8124E),
+                    color: const Color(0xFFC98A81),
                     width: 1.8,
                   ),
                   borderRadius: BorderRadius.circular(15),
@@ -136,32 +132,32 @@ class _CartState extends State<Cart> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      priceDetails(detail: 'Price', prz: '\$32'),
+                      priceDetails(detail: 'Price', prz: '\$$price'),
                       priceDetails(detail: 'Shipping fee', prz: '\$2'),
                       priceDetails(detail: 'Total Price', prz: '\$$price'),
                     ],
                   ),
                 ),
               ),
-              const SizedBox(height:30),
-             MaterialButton(
-            onPressed: () {},
-            elevation: 0,
-            minWidth: double.infinity,
-            height: 50,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            color: const Color(0xCCA8124E),
-            child: const Text(
-              'Order Now',
-              style: TextStyle(
-                fontSize: 15,
-                color: Colors.white,
-                fontWeight: FontWeight.w600,
+              const SizedBox(height: 5),
+              MaterialButton(
+                onPressed: () {},
+                elevation: 0,
+                minWidth: double.infinity,
+                height: 50,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                color: const Color(0xFFC98A81),
+                child: const Text(
+                  'Order Now',
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
               ),
-            ),
-          ),
             ],
           ),
         ),
@@ -185,13 +181,13 @@ class _CartState extends State<Cart> {
           Text(
             '$detail',
             style: const TextStyle(
-              color: Color(0xCCA8124E),
+              color: Color(0xFFC98A81),
             ),
           ),
           Text(
             '$prz',
             style: const TextStyle(
-              color: Color(0xCCA8124E),
+              color: Color(0xFFC98A81),
             ),
           ),
         ],
