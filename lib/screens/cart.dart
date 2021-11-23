@@ -9,14 +9,13 @@ class Cart extends StatefulWidget {
 
 class _CartState extends State<Cart> {
   int _item = 1;
- late int price;
-  
+  late int price;
+  //var total = price + 2;
 
   @override
   void initState() {
     super.initState();
     price = 16;
-    
   }
 
   @override
@@ -70,7 +69,8 @@ class _CartState extends State<Cart> {
                     height: 30,
                     width: 80,
                     decoration: BoxDecoration(
-                      border: Border.all(color: const Color(0xFFC98A81), width: 0.4),
+                      border: Border.all(
+                          color: const Color(0xFFC98A81), width: 0.4),
                       borderRadius: BorderRadius.circular(20),
                     ),
                     child: Padding(
