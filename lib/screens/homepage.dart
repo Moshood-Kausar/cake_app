@@ -76,102 +76,110 @@ class _HomeState extends State<Home> {
                   )
                 ],
               ),
-             
-               SizedBox(
-            height: 400,
-            child: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              physics: const BouncingScrollPhysics(),
-              child: Row(
-                children: List.generate(
-                  productItems.length,
-                  (index) {
-                    return Stack(
-              alignment: Alignment.center,
-              fit: StackFit.passthrough,
-              overflow: Overflow.visible,
-              children: [
-              Padding(
-                padding: const EdgeInsets.only(left: 8.0),
-                child: Container(
-                  height: 170,
-                  width: 210,
-                  alignment: Alignment.centerRight,
-                  decoration: BoxDecoration(
-                      color:productItems[index].bcolor,
-                      borderRadius: BorderRadius.circular(40)),
-                  child: Padding(
-                    padding: const EdgeInsets.only(
-                      left: 10.0,
-                      right: 10.0,
-                      top: 80.0,
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 8.0),
-                          child: Row(
-                            children: List.generate(
-                              5,
-                              (index) => const Icon(
-                                Icons.star,
-                                size: 15,
-                                color: Colors.yellow,
+              SizedBox(
+                height: 400,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  physics: const BouncingScrollPhysics(),
+                  child: Row(
+                    children: List.generate(
+                      productItems.length,
+                      (index) {
+                        return Stack(
+                          alignment: Alignment.center,
+                          fit: StackFit.passthrough,
+                          overflow: Overflow.visible,
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 8.0),
+                              child: Container(
+                                height: 170,
+                                width: 210,
+                                alignment: Alignment.centerRight,
+                                decoration: BoxDecoration(
+                                    color: productItems[index].bcolor,
+                                    borderRadius: BorderRadius.circular(40)),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                    left: 10.0,
+                                    right: 10.0,
+                                    top: 80.0,
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 8.0),
+                                        child: Row(
+                                          children: List.generate(
+                                            5,
+                                            (index) => const Icon(
+                                              Icons.star,
+                                              size: 15,
+                                              color: Colors.yellow,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 8.0),
+                                        child: Text(
+                                          '${productItems[index].name}',
+                                          style: const TextStyle(
+                                              color: Colors.white),
+                                        ),
+                                      ),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Text(
+                                            "\$${productItems[index].price}",
+                                            style: const TextStyle(
+                                                color: Colors.white),
+                                          ),
+                                          const CircleAvatar(
+                                            radius: 15,
+                                            backgroundColor: Colors.yellow,
+                                            child: Icon(
+                                                Icons.favorite_border_outlined,
+                                                color: Colors.white),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ),
                             ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(bottom: 8.0),
-                          child: Text(
-                            '${productItems[index].name}',
-                            style: const TextStyle(color: Colors.white),
-                          ),
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "\$${productItems[index].price}",
-                              style: const TextStyle(color: Colors.white),
-                            ),
-                            const CircleAvatar(
-                              radius: 15,
-                              backgroundColor: Colors.yellow,
-                              child: Icon(Icons.favorite_border_outlined,
-                                  color: Colors.white),
+                            Positioned(
+                              top: -110,
+                              child: Container(
+                                alignment: Alignment.center,
+                                height: 200,
+                                width: 250,
+                                child: Image.asset(
+                                  '${productItems[index].img}',
+                                  width: 220,
+                                  height: 170,
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
                             ),
                           ],
-                        ),
-                      ],
+                        );
+                      },
                     ),
                   ),
                 ),
               ),
-              Positioned(
-                  top: -110,
-                  child: Container(
-                    alignment: Alignment.center,
-                    height: 200,
-                    width: 250,
-                    child: Image.asset('${productItems[index].img}',
-                    width: 220,height:170,
-                      fit: BoxFit.contain,
-                    ),
-                  )),
-              ]);
-                  },
-                ),
-              ),
-            ),
-               )
-                        ],
+            ],
           ),
         ),
       ),
     );
   }
-
- 
 }
