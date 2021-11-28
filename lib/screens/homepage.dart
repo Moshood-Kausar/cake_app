@@ -85,6 +85,7 @@ class _HomeState extends State<Home> {
           ),
           SizedBox(
             height: 400,
+            
             child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
@@ -204,7 +205,6 @@ class _HomeState extends State<Home> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 18,
-                          
                             color: const Color(0xFFC98A81),
                             fontWeight: currentSelect == index
                                 ? FontWeight.w900
