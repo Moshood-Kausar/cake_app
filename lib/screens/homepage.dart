@@ -204,10 +204,11 @@ class _HomeState extends State<Home> {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 18,
+                          
                             color: const Color(0xFFC98A81),
                             fontWeight: currentSelect == index
-                                ? FontWeight.w700
-                                : FontWeight.w400,
+                                ? FontWeight.w900
+                                : FontWeight.w600,
                           ),
                         ),
                       ),
