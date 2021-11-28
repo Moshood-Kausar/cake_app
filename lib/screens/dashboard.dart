@@ -29,11 +29,17 @@ class _DashBoardState extends State<DashBoard> {
     Icons.shopping_cart,
     Icons.person,
   ];
+   final List<String> _label = [
+    'Home',
+    'Favorite',
+    'Cart',
+    'Profile',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomAppBar(
+     bottomNavigationBar: BottomAppBar(
         elevation: 0,
         child: Container(
           decoration: const BoxDecoration(
@@ -45,31 +51,45 @@ class _DashBoardState extends State<DashBoard> {
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.max, 
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: List.generate(
-                4,
-                (index) => GestureDetector(
-                  onTap: () { 
-                    setState(() {
-                      _currentIndex = index;
-                    });
-                  },
-                  child: Container(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 26, vertical: 10),
-                    margin: const EdgeInsets.symmetric(vertical: 8),
-                    decoration: BoxDecoration(
-                      color:
-                          _currentIndex == index ? Colors.black : Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Icon(
-                      _icons[index],
-                      size: 26,
-                      color:
-                          _currentIndex == index ? Colors.white : Colors.grey,
+            child: FittedBox(
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: List.generate(
+                  4,
+                  (index) => GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        _currentIndex = index;
+                      });
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 8),
+                      margin: const EdgeInsets.symmetric(vertical: 10),
+                      decoration: BoxDecoration(
+                        color: _currentIndex == index
+                            ?  Color(0xFFF9DCD7)
+                            : Colors.white,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Icon(
+                            _icons[index],
+                            size: 18,
+                            color: _currentIndex == index
+                                ?  Color(0xFFC98A81)
+                                :  Color(0xFFC98A81),
+                          ),
+                          const SizedBox(width: 4),
+                          _currentIndex == index
+                              ? Text(_label[index],
+                                  style: const TextStyle(color:  Color(0xFFC98A81), fontSize:12))
+                              : const Center(),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -78,27 +98,6 @@ class _DashBoardState extends State<DashBoard> {
           ),
         ),
       ),
-     
-      // bottomNavigationBar: BottomNavigationBar(
-      //   currentIndex: _currentIndex,
-      //   onTap: onTapped,
-      //   iconSize: 20,
-      //   selectedItemColor: Colors.black,
-
-      //   unselectedItemColor: Colors.grey,
-      //   selectedLabelStyle: const TextStyle(fontSize: 16),
-      //   unselectedLabelStyle: const TextStyle(color: Colors.grey),
-      //   type: BottomNavigationBarType.fixed,
-      //   // ignore: prefer_const_literals_to_create_immutables
-      //   items: [
-      //     const BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home  "),
-      //     const BottomNavigationBarItem(
-      //         icon: Icon(Icons.favorite), label: " Favorite "),
-      //     const BottomNavigationBarItem(icon: Icon(Icons.shopping_cart), label: " Cart "),
-      //     const BottomNavigationBarItem(
-      //         icon: Icon(Icons.person), label: "Profile  "),
-      //   ],
-      // ),
       body: _widget[_currentIndex],
     );
   }

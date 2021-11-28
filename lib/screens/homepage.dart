@@ -93,6 +93,7 @@ class _HomeState extends State<Home> {
                     return Stack(
                       alignment: Alignment.center,
                       fit: StackFit.passthrough,
+                      overflow: Overflow.visible,
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(left: 8.0),
@@ -228,26 +229,20 @@ class _HomeState extends State<Home> {
                 });
               },
               children: [
-                Center(
-                  child: cakecard(
-                    text: 'Waffle Sliced Banana',
-                    price: "\$16",
-                    img: "assets/waffle.jpg",
-                  ),
+                cakecard(
+                  text: 'Waffle Sliced Banana',
+                  price: "\$15",
+                  img: "assets/waffle.jpg",
                 ),
-                Center(
-                  child: cakecard(
-                    text: 'Waffle Sliced Banana',
-                    price: "\$16",
-                    img: "assets/stcake.png",
-                  ),
+                cakecard(
+                  text: 'Red Velvet Desert',
+                  price: "\$18",
+                  img: "assets/stcake.png",
                 ),
-                Center(
-                  child: cakecard(
-                    text: 'Waffle Sliced Banana',
-                    price: "\$16",
-                    img: "assets/ccake.png",
-                  ),
+                cakecard(
+                  text: 'Ice Cream Cerry',
+                  price: "\$16",
+                  img: "assets/ccake.png",
                 ),
               ],
             ),
@@ -259,8 +254,8 @@ class _HomeState extends State<Home> {
 
   Widget cakecard({
     String? img,
-    String? price,
-    String? text,
+    price,
+    text,
   }) {
     return Container(
       margin: const EdgeInsets.all(8.0),
@@ -270,6 +265,12 @@ class _HomeState extends State<Home> {
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.2),
+            blurRadius: 7,
+          ),
+        ],
       ),
       child: Row(
         children: [
