@@ -10,7 +10,6 @@ class Cart extends StatefulWidget {
 class _CartState extends State<Cart> {
   int _item = 1;
   late int price;
-  //var total = price + 2;
 
   @override
   void initState() {
@@ -80,14 +79,16 @@ class _CartState extends State<Cart> {
                         children: [
                           GestureDetector(
                               onTap: () {
-                                setState(() {
-                                  if (_item == 1) {
-                                    _item = 1;
-                                  } else {
-                                    _item -= 1;
-                                    price -= price;
-                                  }
-                                });
+                                setState(
+                                  () {
+                                    if (_item == 1) {
+                                      _item = 1;
+                                    } else {
+                                      _item -= 1;
+                                      price -= price;
+                                    }
+                                  },
+                                );
                               },
                               child: count('-')),
                           Text('$_item',
@@ -95,10 +96,12 @@ class _CartState extends State<Cart> {
                                   fontSize: 15, color: Colors.grey)),
                           GestureDetector(
                             onTap: () {
-                              setState(() {
-                                _item += 1;
-                                price += price;
-                              });
+                              setState(
+                                () {
+                                  _item += 1;
+                                  price += price;
+                                },
+                              );
                             },
                             child: count('+'),
                           ),
@@ -111,9 +114,10 @@ class _CartState extends State<Cart> {
               const SizedBox(height: 20),
               Row(
                 children: const [
-                  Text('Detail Price',
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  Text(
+                    'Detail Price',
+                    style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                  ),
                 ],
               ),
               const SizedBox(height: 20),

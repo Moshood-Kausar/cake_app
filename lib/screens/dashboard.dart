@@ -4,7 +4,6 @@ import 'package:cake_app/screens/homepage.dart';
 import 'package:cake_app/screens/profile.dart';
 import 'package:flutter/material.dart';
 
-
 class DashBoard extends StatefulWidget {
   const DashBoard({Key? key}) : super(key: key);
 
@@ -13,23 +12,21 @@ class DashBoard extends StatefulWidget {
 }
 
 class _DashBoardState extends State<DashBoard> {
-  
-
   int _currentIndex = 0;
- 
+
   final List<Widget> _widget = [
-     const Home(),
-     Favorite(),
+    const Home(),
+    Favorite(),
     const Cart(),
-     Profile(),
+    const Profile(),
   ];
-   final List<IconData> _icons = [
+  final List<IconData> _icons = [
     Icons.home_filled,
     Icons.favorite_sharp,
     Icons.shopping_cart,
     Icons.person,
   ];
-   final List<String> _label = [
+  final List<String> _label = [
     'Home',
     'Favorite',
     'Cart',
@@ -39,7 +36,7 @@ class _DashBoardState extends State<DashBoard> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     bottomNavigationBar: BottomAppBar(
+      bottomNavigationBar: BottomAppBar(
         elevation: 0,
         child: Container(
           decoration: const BoxDecoration(
@@ -59,9 +56,11 @@ class _DashBoardState extends State<DashBoard> {
                   4,
                   (index) => GestureDetector(
                     onTap: () {
-                      setState(() {
-                        _currentIndex = index;
-                      });
+                      setState(
+                        () {
+                          _currentIndex = index;
+                        },
+                      );
                     },
                     child: Container(
                       padding: const EdgeInsets.symmetric(
@@ -69,7 +68,7 @@ class _DashBoardState extends State<DashBoard> {
                       margin: const EdgeInsets.symmetric(vertical: 10),
                       decoration: BoxDecoration(
                         color: _currentIndex == index
-                            ?  Color(0xFFF9DCD7)
+                            ? const Color(0xFFF9DCD7)
                             : Colors.white,
                         borderRadius: BorderRadius.circular(20),
                       ),
@@ -80,13 +79,14 @@ class _DashBoardState extends State<DashBoard> {
                             _icons[index],
                             size: 18,
                             color: _currentIndex == index
-                                ?  Color(0xFFC98A81)
-                                :  Color(0xFFC98A81),
+                                ? const Color(0xFFC98A81)
+                                : const Color(0xFFC98A81),
                           ),
                           const SizedBox(width: 4),
                           _currentIndex == index
                               ? Text(_label[index],
-                                  style: const TextStyle(color:  Color(0xFFC98A81), fontSize:12))
+                                  style: const TextStyle(
+                                      color: Color(0xFFC98A81), fontSize: 12))
                               : const Center(),
                         ],
                       ),
@@ -103,8 +103,10 @@ class _DashBoardState extends State<DashBoard> {
   }
 
   void onTapped(int index) {
-    setState(() {
-      _currentIndex = index;
-    });
+    setState(
+      () {
+        _currentIndex = index;
+      },
+    );
   }
 }

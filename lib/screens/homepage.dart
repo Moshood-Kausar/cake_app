@@ -64,8 +64,10 @@ class _HomeState extends State<Home> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              const Text("Recommended",
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900)),
+              const Text(
+                "Recommended",
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900),
+              ),
               Row(
                 children: const [
                   Text(
@@ -185,10 +187,12 @@ class _HomeState extends State<Home> {
                 _tabs.length,
                 (index) => GestureDetector(
                   onTap: () {
-                    setState(() {
-                      currentSelect = index;
-                      _controller.jumpToPage(index);
-                    });
+                    setState(
+                      () {
+                        currentSelect = index;
+                        _controller.jumpToPage(index);
+                      },
+                    );
                   },
                   child: Column(
                     children: [
